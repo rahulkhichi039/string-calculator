@@ -1,68 +1,72 @@
 # StringCalculator
 
 ## Overview
-This is a TDD (Test-Driven Development) exercise for implementing a simple string calculator.
+This is a TDD (Test-Driven Development) exercise for implementing a simple string calculator in Python.
 
 ## Steps to Implement
 
 ### Step 1: Basic Addition
-Create a method with the following signature:
+Create a function with the following signature:
 
-```java
-int add(String numbers)
+```python
+def add(numbers: str) -> int:
 ```
 
 - **Input:** A string containing numbers separated by commas.
 - **Output:** An integer representing the sum of the numbers.
 
 #### Examples:
-```java
-add("")       // Output: 0
-add("1")      // Output: 1
-add("1,5")    // Output: 6
+```python
+add("")       # Output: 0
+add("1")      # Output: 1
+add("1,5")    # Output: 6
 ```
 
 ### Step 2: Handle Multiple Numbers
-Modify the method to handle an arbitrary number of values.
+Modify the function to handle an arbitrary number of values.
 
 ### Step 3: Support New Line as a Delimiter
 Allow newline characters (`\n`) as valid delimiters in addition to commas.
 
 #### Example:
-```java
-add("1\n2,3")   // Output: 6
+```python
+add("1\n2,3")   # Output: 6
 ```
 
 ### Step 4: Support Custom Delimiters
 Enable support for custom delimiters defined at the beginning of the string.
 
 #### Format:
-```
-//[delimiter]\n[numbers...]
+```python
+"//[delimiter]\n[numbers...]"
 ```
 
 #### Example:
-```java
-add("//;\n1;2")   // Output: 3
+```python
+add("//;\n1;2")   # Output: 3
 ```
 
 - Any character can be used as a delimiter.
-- Multiple delimiters can be supported if enclosed in square brackets (`//[*][%]\n1*2%3` should return `6`).
+- Multiple delimiters can be supported if enclosed in square brackets (`"//[*][%]\n1*2%3"` should return `6`).
 
 ### Step 5: Handle Negative Numbers
-- If the input contains negative numbers, throw an exception.
+- If the input contains negative numbers, raise an exception.
 - The exception message should list all negative numbers.
 
 #### Example:
-```java
+```python
 add("1,-2,3,-4")
-// Exception: "Negative numbers not allowed: -2, -4"
+# Exception: "Negative numbers not allowed: -2, -4"
 ```
 
 ### Additional Considerations
 - Numbers greater than `1000` should be ignored.
-- Custom delimiters of any length should be supported (e.g., `//[***]\n1***2***3` should return `6`).
+- Custom delimiters of any length should be supported (e.g., `"//[***]\n1***2***3"` should return `6`).
 
 ## Running Tests
 Ensure that unit tests cover all the above scenarios for correctness and robustness.
 
+Run the tests using:
+```sh
+pytest string_calculator_test.py
+```
